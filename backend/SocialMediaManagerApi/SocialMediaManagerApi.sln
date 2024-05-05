@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 #
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{70EA2215-2089-40DE-8918-7FA3D08D51A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaManagerApi", "src\SocialMediaManagerApi\SocialMediaManagerApi.csproj", "{03B31EC5-63F3-4F8C-803A-713EA40032D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaManager.Api", "src\SocialMediaManager.Api\SocialMediaManager.Api.csproj", "{03B31EC5-63F3-4F8C-803A-713EA40032D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaManager.Domain", "src\SocialMediaManager.Domain\SocialMediaManager.Domain.csproj", "{E1FDBD39-9729-48BC-8550-96D5F2322999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaManager.Application", "src\SocialMediaManager.Application\SocialMediaManager.Application.csproj", "{3E90A430-93CC-4094-A818-6FC210F78A51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaManager.Infrastructure", "src\SocialMediaManager.Infrastructure\SocialMediaManager.Infrastructure.csproj", "{BEF36BCA-7A9A-482A-A344-3E462947F49D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +21,23 @@ Global
 		{03B31EC5-63F3-4F8C-803A-713EA40032D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03B31EC5-63F3-4F8C-803A-713EA40032D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03B31EC5-63F3-4F8C-803A-713EA40032D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1FDBD39-9729-48BC-8550-96D5F2322999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1FDBD39-9729-48BC-8550-96D5F2322999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1FDBD39-9729-48BC-8550-96D5F2322999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1FDBD39-9729-48BC-8550-96D5F2322999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E90A430-93CC-4094-A818-6FC210F78A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E90A430-93CC-4094-A818-6FC210F78A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E90A430-93CC-4094-A818-6FC210F78A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E90A430-93CC-4094-A818-6FC210F78A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF36BCA-7A9A-482A-A344-3E462947F49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF36BCA-7A9A-482A-A344-3E462947F49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF36BCA-7A9A-482A-A344-3E462947F49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF36BCA-7A9A-482A-A344-3E462947F49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{03B31EC5-63F3-4F8C-803A-713EA40032D9} = {70EA2215-2089-40DE-8918-7FA3D08D51A9}
+		{E1FDBD39-9729-48BC-8550-96D5F2322999} = {70EA2215-2089-40DE-8918-7FA3D08D51A9}
+		{3E90A430-93CC-4094-A818-6FC210F78A51} = {70EA2215-2089-40DE-8918-7FA3D08D51A9}
+		{BEF36BCA-7A9A-482A-A344-3E462947F49D} = {70EA2215-2089-40DE-8918-7FA3D08D51A9}
 	EndGlobalSection
 EndGlobal
