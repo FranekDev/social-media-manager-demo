@@ -1,10 +1,22 @@
+using Microsoft.OpenApi.Models;
+using SocialMediaManager.Api;
+using SocialMediaManager.Application;
+using SocialMediaManager.Infrastructure;
+// using SocialMediaManager.Infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger();
 builder.Services.AddControllers();
+
+builder.Services.AddDb(builder.Configuration);
+builder.Services.AddIdentityAndEntityFrameworkStores();
+builder.Services.AddAuthenticationAndJwtBearer(builder.Configuration);
+
+builder.Services.AddServices();
 
 var app = builder.Build();
 
@@ -16,5 +28,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
