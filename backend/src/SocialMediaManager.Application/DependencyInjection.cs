@@ -5,7 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SocialMediaManager.Application.Services;
+using SocialMediaManager.Application.Services.Instagram;
 using SocialMediaManager.Application.Services.Interfaces;
+using SocialMediaManager.Application.Services.Interfaces.Instagram;
 using SocialMediaManager.Domain.Models;
 using SocialMediaManager.Infrastructure.Database;
 
@@ -63,6 +65,11 @@ public static class DependencyInjection
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IInstagramAuthService, InstagramAuthService>();
+        services.AddScoped<IInstagramUserService, InstagramUserService>();
+        services.AddScoped<IInstagramContentService, InstagramContentService>();
+        services.AddScoped<ISchedulerService, SchedulerService>();
+        services.AddScoped<IInstagramScheduledPostService, InstagramScheduledPostService>();
         
         return services;
     }

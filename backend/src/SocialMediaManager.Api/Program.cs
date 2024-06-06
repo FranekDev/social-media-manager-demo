@@ -1,33 +1,55 @@
-using Microsoft.OpenApi.Models;
+using Hangfire;
 using SocialMediaManager.Api;
 using SocialMediaManager.Application;
 using SocialMediaManager.Infrastructure;
-// using SocialMediaManager.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myAllowSpecificOrigins,
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
 builder.Services.AddControllers();
+
+builder.Services.AddHangfire((sp, config) =>
+{
+    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("Database"));
+});
+
+builder.Services.AddHangfireServer();
+
+builder.Services.AddSingleton<HttpClient>();
 
 builder.Services.AddDb(builder.Configuration);
 builder.Services.AddIdentityAndEntityFrameworkStores();
 builder.Services.AddAuthenticationAndJwtBearer(builder.Configuration);
 
 builder.Services.AddServices();
+builder.Services.AddInfrastructure();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseHangfireDashboard();
+
 app.UseHttpsRedirection();
+
+app.UseCors(myAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
