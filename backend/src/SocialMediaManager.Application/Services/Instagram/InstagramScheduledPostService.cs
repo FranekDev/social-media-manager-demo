@@ -11,13 +11,13 @@ public class InstagramScheduledPostService(IInstagramScheduledPostRepository sch
 {
     private readonly IInstagramScheduledPostRepository _scheduledPostRepository = scheduledPostRepository;
 
-    public async Task<IEnumerable<InstagramScheduledPostContent>> GetScheduledPosts(string igUserId)
+    public async Task<IEnumerable<InstagramScheduledPostContent>> GetScheduledPosts()
     {
         var posts = await _scheduledPostRepository.GetScheduledPosts();
         return MapPostToPostContent(posts);
     }
 
-    public async Task<IEnumerable<InstagramScheduledPostContent>> GetUnpublishedPosts(string igUserId)
+    public async Task<IEnumerable<InstagramScheduledPostContent>> GetUnpublishedPosts()
     {
         var posts = await _scheduledPostRepository.GetScheduledPosts();
         var unPublishedPosts = posts.Where(p => !p.IsPublished);

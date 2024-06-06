@@ -12,13 +12,7 @@ public class SchedulerService(IInstagramContentService contentService) : ISchedu
     
     public async Task SchedulePost(InstagramPost post)
     {
-        var date = DateTime.Parse(post.PublishDate);
-        var time = DateTime.Parse(post.PublishTime);
-        var postPublishDate = string.Join('T', date, time);
-        var dateTimeString = $"{post.PublishDate}T{post.PublishTime}";
-        var publishDate = DateTime.ParseExact(dateTimeString, "yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).AddDays(1);
-        var delay = publishDate - DateTime.Now;
-        
+        var delay = GetPublishDate(post.PublishDate, post.PublishTime) - DateTime.Now;
         var container = await _contentService.GetContainerId(post, post.IgUserId);
 
         if (container?.Id is not null)
@@ -26,5 +20,11 @@ public class SchedulerService(IInstagramContentService contentService) : ISchedu
             BackgroundJob.Schedule<IInstagramContentService>(x => 
                 x.PublishContainer(container.Id, post.IgUserId), delay);
         }
+    }
+    
+    private DateTime GetPublishDate(string publishDate, string publishTime)
+    {
+        var dateTimeString = $"{publishDate}T{publishTime}";
+        return DateTime.ParseExact(dateTimeString, "yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).AddDays(1);
     }
 }
