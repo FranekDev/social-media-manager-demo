@@ -10,10 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  usePublications,
-  formatDateAndTime,
-} from '@/lib/hooks/usePublications';
+import { usePublications } from '@/lib/hooks/usePublications';
 import { Publication } from '@/lib/types/instagram';
 import Image from 'next/image';
 
@@ -50,10 +47,7 @@ export default function Page() {
                 </TableCell>
                 <TableCell>{publication.platform ?? 'Instagram'}</TableCell>
                 <TableCell className="text-right">
-                  {formatDateAndTime(
-                    publication.publishDate,
-                    publication.publishTime
-                  )}
+                  {publication.publishDate}
                 </TableCell>
               </TableRow>
             ))}
