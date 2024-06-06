@@ -2,7 +2,7 @@
 
 ## Social Media Manager
 ### (work in progress)
-Social Media Manager helps You to mange your social media accounts by allowing to to schedule Instagram content.</br>
+Social Media Manager helps You to mange your social media accounts by allowing You to schedule Instagram content.</br>
 Chose precise date and time of publication and worry of nothing else.
 
 ## UI
