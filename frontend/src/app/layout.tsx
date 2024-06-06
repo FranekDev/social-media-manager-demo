@@ -9,6 +9,7 @@ import AppBar from '@/components/AppBar';
 import { auth } from './configurations/auth';
 import { Toaster } from '@/components/ui/toaster';
 import NavBar from '@/components/NavBar';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -30,7 +31,7 @@ export default async function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen min-w-screen bg-background font-sans antialiased',
           fontSans.variable
         )}
       >
@@ -41,11 +42,17 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="absolute right-0 top-0 m-2">
-              <AppBar />
-            </div>
-            {children}
-            <NavBar />
+            <AntdRegistry>
+              <div className="flex flex-col min-h-screen">
+                <div className="p-2 h-[7vh] flex justify-center items-center">
+                  <AppBar />
+                </div>
+                <div className="h-[93vh] flex">
+                  <NavBar />
+                  <div className="w-full h-full">{children}</div>
+                </div>
+              </div>
+            </AntdRegistry>
           </ThemeProvider>
         </Provider>
         <Toaster />

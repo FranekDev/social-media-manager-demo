@@ -8,9 +8,10 @@ import { toast } from './ui/use-toast';
 
 export default function AppBar() {
   const { data: session } = useSession();
+  console.log({session});
 
   return (
-    <div className="flex gap-5 w-screen justify-between">
+    <div className="flex gap-5 w-full justify-between">
       <Button
         variant="link"
         className="ml-4"
