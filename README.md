@@ -1,6 +1,7 @@
 # Social Media Manager
 
 ## Social Media Manager
+### (work in progress)
 Social Media Manager helps You to mange your social media accounts by allowing to to schedule content.</br>
 Chose precise date and time of publication and worry of nothing else.
 
